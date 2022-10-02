@@ -1,0 +1,8 @@
+Do experiment on 1p-001, on three models , on p/full formulas
+
+they have different adaptation lr list,
+For simplicity, only one adaptation step.
+k_query will be changed, only one additional
+
+The finetune num is enlarged to 1000.
+

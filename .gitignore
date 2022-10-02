@@ -1,0 +1,19 @@
+logs/
+*__pycache__*
+data
+*.zip
+.DS_Store
+.ipynb_checkpoints
+tmp
+
+*.csv
+*.svg
+*.pdf
+*.eps
+submission/
+~*
+
+.vscode
+.idea
+# TODO
+out

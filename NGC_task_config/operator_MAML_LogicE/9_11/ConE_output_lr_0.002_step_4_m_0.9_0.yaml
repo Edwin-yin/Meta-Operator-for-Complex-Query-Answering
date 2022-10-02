@@ -1,0 +1,129 @@
+MetaLearning:
+  Algorithm: operator_MAML
+  MAML:
+    adaptation_lr: 0.004
+    adaptation_step: 1
+    batch_size: 512
+    finetune_lr: 0.001
+    finetune_step: 5
+    k_query: 15
+    k_support: 1
+    support_data_num: 50
+    test_batch_size: 1000
+    test_outer_loss: true
+    test_within_adaptation: true
+  operator_MAML:
+    adapt_non_distance: false
+    adaptation_lr: 0.002
+    adaptation_step: 4
+    batch_size: 512
+    finetune_lr: 0.002
+    finetune_step: 5
+    first_order: true
+    k_query: 15
+    k_support: 1
+    momentum: 0.9
+    operator_params_dict:
+      p: projection_net_0.l
+    support_data_num: 500
+    test_batch_size: 1000
+    test_outer_loss: true
+    test_within_adaptation: true
+    weight_decay: 0
+  shrink_adapt_lr: false
+  shrink_finetune_lr: false
+action:
+- train
+- valid
+- test
+cuda: 0
+data:
+  cpu: 10
+  data_folder: data/FB15k-237-betae-1p-01
+  type: EFO-1
+estimator:
+  ConE:
+    center_reg: 0.02
+    drop: 0.1
+    entity_dim: 800
+    gamma: 30
+    hidden_dim: 1600
+    num_layer: 2
+    relation_dim: 1600
+  NewLook:
+    center_reg: 0.2
+    entity_dim: 400
+    relation_dim: 400
+    x_reg: 0.2
+  beta:
+    entity_dim: 400
+    gamma: 60
+    hidden_dim: 1600
+    num_layers: 2
+    relation_dim: 400
+  box:
+    center_reg: 0.02
+    entity_dim: 400
+    gamma: 60
+    offset_activation: None
+    relation_dim: 400
+  cqd:
+    entity_dim: 1000
+    norm_type: product
+    relation_dim: 1000
+  dm:
+    entity_dim: 2
+    hidden_dim: 1600
+    num_layers: 2
+    relation_dim: 2
+  embedding: ConE
+  logic:
+    bounded: 0
+    entity_dim: 400
+    entity_normalization: false
+    gamma: 0.375
+    hidden_dim: 1600
+    num_layers: 2
+    projection_normalization: false
+    relation_dim: 400
+    relation_normalization: false
+    t_norm: luk
+    use_att: 1
+    use_gtrans: 0
+evaluate:
+  batch_size: 1000
+  formula_id_file: data/FB15k-237-betae/test_formulas.csv
+  interested_normal_forms:
+  - DNF
+  - DNF+MultiIU
+  - DeMorgan
+  print: true
+load:
+  checkpoint_path: null
+  load_model: false
+  step: 0
+output:
+  output_path: operator_Meta-1p-01/ConE_output_lr_0.002_step_4_m_0.9_0
+  prefix: EFO-1_log
+seed: 0
+train:
+  batch_size: 512
+  count_distance_dict:
+    p:
+    - p
+    - i
+  evaluate_every_steps: 15000
+  formula_id_file: data/FB15k-237-betae/train_formulas.csv
+  freeze_formula_file: data/FB15k-237-betae/freeze_formulas_dumps.csv
+  freeze_other: false
+  interested_normal_forms:
+  - DNF+MultiIU
+  learning_rate: 5.0e-05
+  log_every_steps: 100
+  negative_sample_size: 128
+  save_every_steps: 150000
+  steps: 300000
+  train_method: MetaLearning
+  use_distance: output
+  use_freeze: false
+  warm_up_steps: 150000
