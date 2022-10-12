@@ -1,2 +1,0 @@
-Adding input binary/output binary for LogicE/BetaE/ConE model in 1p-01 dataset, only the adapt_lr is changed as it
-is the most sensitive parameter

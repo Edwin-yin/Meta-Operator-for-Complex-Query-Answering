@@ -1,7 +1,0 @@
-In this series of experiments, I use LogicE/BetaE/ConE on 1p-01 dataset with normal train/test formulas, all refuse to shrink lr.
-Take only one step away from default setting.
-The goal is to partially find:
-   1.root/leaf/input/output
-   2.lr, adapt_step, momentum
-
-But most importantly, whether, they works out, and in which formulas did they work out.

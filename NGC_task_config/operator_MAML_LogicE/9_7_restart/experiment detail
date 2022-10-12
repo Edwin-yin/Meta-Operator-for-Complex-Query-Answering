@@ -1,5 +1,0 @@
-In this series of experiments, I use LogicE on 1p-01 dataset with normal train/test formulas, all refuse to shrink lr.
-
-The goal is to find:
-   1.root/leaf
-   2.lr, adapt_step, momentum
